@@ -1,10 +1,8 @@
-<% include ('./partials/header.ejs');
-
-<h1>liste des joueurs</h1>
+<%- include('./partials/header')-%>
 
 <div class="container">
     <div class="row">
-        <div class="cold-md-12">
+        <div class="col-md-12">
             <table class="table">
                 <thead class="thead-dark">
                   <tr>
@@ -12,27 +10,30 @@
                     <th scope="col">firstname</th>
                     <th scope="col">lastname</th>
                     <th scope="col">email</th>
+                    <th scope="col">position</th>
                     <th scope="col">number</th>
                     <th scope="col">image</th>
                   </tr>
                 </thead>
                 <tbody>
-                    <% players.forEach(function(player) {%>
-                        <tr>
-                            <th scope="row"><%player.id%></th>
-                            <td><%=player.firstname%></td>
-                            <td><%=player.lastname%></td>
-                            <td><%=player.email%></td>
-                            <td><%=player.number%></td>
-                            <td><img src="<%=player.image%>" alt="..." class="img-thumbail" ></td>
-                        </tr>
 
-                        <%});%>
-                        })
+                <% players.forEach(function(player) {%>
 
-</tbody>
-</table>
+                  <tr>
+                        <th scope="row"><%=player.id%></th>
+                        <td><%=player.firstname%></td>
+                        <td><%=player.lastname%></td>
+                        <td><%=player.email%></td>
+                        <td><%=player.position%></td>
+                        <td><%=player.number%></td>
+                        <td><img src="<%=player.image%>" alt="" class="img-thumbnail"></td>
+                  </tr>
+
+                <%});%>
+
+                </tbody>
+              </table>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-<% include ('./partials/footer.ejs');
+<%- include('./partials/footer')-%>

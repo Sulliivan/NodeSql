@@ -3,6 +3,15 @@ const path = require ("path");
 const mysql = require ("mysql");
 require('dotenv').config()
 
+
+// controller philippe
+/*
+const {addPlayerPage, AddplayerPost} = require ("./controllers")
+*/
+
+
+
+
 // Express
 const app = express()
 
@@ -32,10 +41,35 @@ db.connect((err) => {
 global.db = db;
 
 //controllers
-const {getHomePage} = require ("./controllers/index")
+const { getHomePage } = require ("./controllers/index");
+const { addPlayer } = require('./controllers/players');
+const { getSinglePlayer} = require('./controllers');
 
 //routes
 app.get("/", getHomePage)
+app.post("/register/create", addPlayer)
+
+app.get("/register",(req, res) => {
+    res.render("form")
+})
+
+// afficher un seul joueur
+app.get ("/:id", getSinglePlayer)
+
+
+
+
+// url philippe
+/*
+app.get ("/add", addPlayerPage)
+app.post ("/add", addPlayerPost)
+*/
+
+
+
+
+
+
 
 
 app.listen(3000, function() {
