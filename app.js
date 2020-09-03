@@ -1,6 +1,7 @@
 const express = require ('express');
 const path = require ("path");
 const mysql = require ("mysql");
+const methodOverride = require ('method-override')
 require('dotenv').config()
 
 
@@ -14,6 +15,8 @@ const {addPlayerPage, AddplayerPost} = require ("./controllers")
 
 // Express
 const app = express()
+//method over
+app.use(methodOverride('_method'))
 
 // Ejs
 app.set ('view engine', 'ejs');
@@ -38,25 +41,31 @@ db.connect((err) => {
     if (err) { throw err;}
     console.log('Connecté à la base MySQL');
 });
+
 global.db = db;
 
 //controllers
 const { getHomePage } = require ("./controllers/index");
 const { addPlayer } = require('./controllers/players');
-const { getSinglePlayer} = require('./controllers');
+const { getSinglePlayer, getUpdateSinglePlayer } = require('./controllers/player');
+
+
 
 //routes
 app.get("/", getHomePage)
 app.post("/register/create", addPlayer)
 
-app.get("/register",(req, res) => {
+
+
+
+/*app.get("/register",(req, res) => {
     res.render("form")
-})
+}) 
+*/
 
 // afficher un seul joueur
-app.get ("/:id", getSinglePlayer)
-
-
+app.get ("/player/:id", getSinglePlayer)
+app.get ("/player/edit/:id", getUpdateSinglePlayer)
 
 
 // url philippe
@@ -64,13 +73,6 @@ app.get ("/:id", getSinglePlayer)
 app.get ("/add", addPlayerPage)
 app.post ("/add", addPlayerPost)
 */
-
-
-
-
-
-
-
 
 app.listen(3000, function() {
     console.log('le serveur ecoute le port 3000');

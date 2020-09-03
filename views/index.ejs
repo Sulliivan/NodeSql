@@ -1,8 +1,4 @@
-<%- include('./partials/header')-%>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
+©
             <table class="table">
                 <thead class="thead-dark">
                   <tr>
@@ -27,6 +23,7 @@
                         <td><%=player.position%></td>
                         <td><%=player.number%></td>
                         <td><img src="<%=player.image%>" alt="" class="img-thumbnail"></td>
+                        <td><a href="/player/<%=player.image%>"></a></td>
                   </tr>
 
                 <%});%>
