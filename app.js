@@ -5,14 +5,6 @@ const methodOverride = require ('method-override')
 require('dotenv').config()
 
 
-// controller philippe
-/*
-const {addPlayerPage, AddplayerPost} = require ("./controllers")
-*/
-
-
-
-
 // Express
 const app = express()
 //method over
@@ -47,32 +39,17 @@ global.db = db;
 //controllers
 const { getHomePage } = require ("./controllers/index");
 const { addPlayer } = require('./controllers/players');
-const { getSinglePlayer, getUpdateSinglePlayer } = require('./controllers/player');
+const { getSinglePlayer, getUpdateSinglePlayer, updateSinglePlayer, deleteSinglePlayer } = require('./controllers/player');
 
-
-
-//routes
-app.get("/", getHomePage)
-app.post("/register/create", addPlayer)
-
-
-
-
-/*app.get("/register",(req, res) => {
-    res.render("form")
-}) 
-*/
 
 // afficher un seul joueur
+app.get("/", getHomePage)
 app.get ("/player/:id", getSinglePlayer)
+app.post("/register/create", addPlayer)
 app.get ("/player/edit/:id", getUpdateSinglePlayer)
+app.put ("/player/edit/:id", updateSinglePlayer)
+app.delete("/player/delete/:id", deleteSinglePlayer)
 
-
-// url philippe
-/*
-app.get ("/add", addPlayerPage)
-app.post ("/add", addPlayerPost)
-*/
 
 app.listen(3000, function() {
     console.log('le serveur ecoute le port 3000');

@@ -6,7 +6,6 @@ module.exports = {
       let password = req.body.password;
       let position = req.body.position;
       let number = req.body.number;
-      let image = req.image;
 
       let query = "INSERT INTO players (firstname, lastname, email, password, position, number) VALUES ('" + firstname + "', '" + lastname + "', '" +
       email +
@@ -26,3 +25,6 @@ module.exports = {
                 }); 
               }
             }
+
+
+

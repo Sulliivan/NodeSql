@@ -1,17 +1,18 @@
 <%- include('./partials/header')-%>
 
-    <form method="POST" action="/players/edit/<%=player.id%>/?_methode=PUT">
-        <div class="form-group">prenom</label>
+    <form method="POST" action="/player/edit/<%=player.id%>?_method=PUT">
+       
+        <div class="form-group">
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="firstname" value="<%=player.firstname%>">
-        
         </div>
+
         <div class="form-group">
             <label for="exampleInputEmail1">nom</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="lastname" value="<%=player.lastname%>">
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlSelect1">poste actuel : <%=player.position%></label>
+            <label for="exampleFormControlSelect1"> poste actuel : <%=player.position%> </label>
                 <select name="position" id="exampleFormControlSelect1">
                     <option value="attaquant">attaquant</option>
                     <option value="defenseur">defenseur</option>
