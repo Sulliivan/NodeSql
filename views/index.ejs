@@ -11,25 +11,27 @@
                     <th scope="col">image</th>
                   </tr>
                 </thead>
-                <tbody>
 
-                <% players.forEach(function(player) {%>
-                  <tr>
-                          <th scope="row"><%=player.id%></th>
-                          <td><%=player.firstname%></td>
-                          <td><%=player.lastname%></td>
-                          <td><%=player.email%></td>
-                          <td><%=player.position%></td>
-                          <td><%=player.number%></td>
-                          <td><img src="<%=player.image%>" alt="" class="img-thumbnail"></td>
-                        <td><form action="/player/delete/<%=player.id%>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-outline-danger">supprimer le joueur</button>
-                      </form></td>
-                  </tr>
-                <%});%>
+                <tbody>
+                  <% players.forEach(function(player) {%>
+                    <tr>
+                        <th scope="row"><%=player.id%></th>
+                            <td><%=player.firstname%></td>
+                            <td><%=player.lastname%></td>
+                            <td><%=player.email%></td>
+                            <td><%=player.position%></td>
+                            <td><%=player.number%></td>
+                            <td><img src="<%=player.image%>" alt="" class="img-thumbnail"></td>
+                          <td><form action="/player/delete/<%=player.id%>?_method=DELETE" method="POST">
+                          <button type="submit" class="btn btn-outline-danger">supprimer le joueur</button>
+                        </form></td>
+                    </tr>
+                  <%});%>
                 </tbody>
+
               </table>
         </div>
     </div>
 </div>
+
 <%- include('./partials/footer')-%>

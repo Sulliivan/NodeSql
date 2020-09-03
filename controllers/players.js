@@ -1,5 +1,6 @@
 module.exports = {
   addPlayer: (req, res) => {
+    
       let firstname = req.body.firstname;
       let lastname = req.body.lastname;
       let email = req.body.email;
